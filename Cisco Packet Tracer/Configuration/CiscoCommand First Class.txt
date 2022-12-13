@@ -1,0 +1,96 @@
+Hostname Friend
+Friend name hostname er
+
+disable -> user mode
+
+en --> privieleged mode
+
+
+password encryption:
+conf t
+service password-encryption 
+
+
+line console 1 --> 2 ta console reduntant
+user mode password :
+en
+conf t
+line console 0
+password cisco
+login
+ctrl z
+exit
+return
+
+privieleged mode password :
+en
+conf t
+enable secret class
+exit
+
+
+telnet password setting :
+en
+conf t
+line vty 0 15
+password cisco
+login
+ctrl z
+exit
+return
+
+show runnning config - switch
+ 
+banner motd #Authorized Access#
+
+copy run start
+
+============telnet
+switch - L2 ip = vlan
+interface vlan 1
+ip address 192.168.10.10 255.255.255.0
+no shutdown
+
+
+line vty 0 15
+password cisco
+login
+---- now telnet possible-----
+
+
+vlan 10
+name cse 
+vlan 30
+name me
+
+int f0/1
+switchport mode access
+switchport access vlan 10
+
+int f0/2
+switchport mode access
+switchport access vlan 30
+
+int f0/1
+switchport mode access
+switchport access vlan 30
+
+int f0/2
+switchport mode access
+switchport access vlan 10
+
+int g0/1
+switchport mode trunk 
+switchport trunk native vlan 1
+switchport trunk allowed 10,30,1
+
+show flash : vlan.dat
+
+----------------
+INTER VLAN ROUTING
+g0/0.10
+g0/0.30
+Tagging protocol apply
+as 2 ta vlan
+
+up order

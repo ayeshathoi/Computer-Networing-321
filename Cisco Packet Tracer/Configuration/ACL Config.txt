@@ -1,0 +1,68 @@
+ACL rules L4
+================
+
+Allow FTP from 192.168.10.10
+Deny all others
+
+
+Allow CSE LAN to browse WEB Server
+Block me LAN to browse Web Server
+
+
+Router 
+Per interface
+G0/0 --> inbound, outbound,IPv4+Ipv6 = 4 ACL
+
+Standard ACL 1-99
+src IP
+
+Placement : Closest to destination
+
+
+=========NUMBER ACL
+
+ip access-list 10 permit 192.168.10.10 0.0.0.15 ---- don't care 4 bit : 10.1-10.15
+deny any ---- default deny // na likhleo hoy
+192.168.10.64 0-15
+
+192.168.10.0 0.0.0.15 --> 15 ta thakte pare
+
+ip access-list 10 permit 192.168.10.10 0.0.0.15
+ip access-list 10 deny 192.168.10.0 0.0.0.255
+
+
+ip access-list 10 permit 192.168.20.10 0.0.0.255
+
+
+
+int s0/0/0 
+ip access group
+
+do show access-list
+
+
+
+extended ACL : 100-199
+src IP, Dest Ip, Port
+Placement : Closest to src
+
+
+
+
+
+==========Named ACL ===============
+ip access-list Standard NAME 
+permit host 192.168.10.10
+deny 192.168.10.0 0.0.0.255
+permit 192.168.20.0 0.0.0.255
+
+
+permit ip any any
+
+
+named ACL Extended=================
+ip access-list extended FTP-FiLTER
+permit tcp 192.168.10.0 0.0.0.255 any eq ftp --- ftp allowed
+permit tcp 192.168.10.0 0.0.0.255 any eq ftp-data --- onno lappi teo allowed
+
+permit tcp 192.168.10.0 0.0.0.255 host 100.100.100.3 eq ftp --- ftp allowed

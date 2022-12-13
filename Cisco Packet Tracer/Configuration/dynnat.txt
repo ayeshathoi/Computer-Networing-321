@@ -1,0 +1,37 @@
+int g0/0
+ip address 192.168.10.10 255.255.255.0
+no shutdown
+
+int s0/0/0
+ip address 100.1.1.1 255.255.255.252
+clock rate 64000
+no shutdown
+exit
+
+ip g0/0
+ip nat inside
+ip s0/0/0
+ip nat outside
+
+ip route 0.0.0.0 0.0.0.0 s0/0/0
+
+
+ip nat pool Buet 209.165.200.0 209.165.200.200 netmask 255.255.255.224
+access-list 1 permit 192.168.10.0 0.0.0.255
+ip nat inside source list pool Buet
+
+
+int g0/0
+ip address 192.168.20.10 255.255.255.0
+no shutdown
+
+int s0/0/0
+ip address 100.1.1.2 255.255.255.252
+no shutdown
+exit
+
+ip route 0.0.0.0 0.0.0.0 s0/0/0
+
+ip nat pool Buet 209.165.200.0 209.165.200.200 netmask 255.255.255.224
+access-list 1 permit 192.168.10.0 0.0.0.255
+ip nat inside source list pool Buet
