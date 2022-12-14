@@ -1,0 +1,126 @@
+vlan 10
+name CSE
+vlan 15
+name EEE
+vlan 20
+name ME
+vlan 99
+name Management
+
+int f0/1
+switchport mode access
+switchport access vlan 10
+
+int f0/2
+switchport mode access
+switchport access vlan 15
+
+int f0/3
+switchport mode access
+switchport access vlan 20
+
+
+int f0/4
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,15,20,99
+
+
+------------------------
+int g0/0
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,15,20,99
+
+
+interface g0/0.10
+encapsulation dot1q 10
+ip address 192.168.10.1 255.255.255.0
+interface g0/0.15
+encapsulation dot1q 15
+ip address 192.168.15.1 255.255.255.0
+interface g0/0.20
+encapsulation dot1q 20
+ip address 192.168.20.1 255.255.255.0
+int g0/0
+no shut
+
+
+int s0/0/0
+ip address 3.1.1.1 255.255.255.252
+clock rate 64000
+no shut
+
+
+
+line console 0
+password CSE
+login
+enable secret class
+
+
+ip route 0.0.0.0 0.0.0.0 s0/0/0
+
+
+int g0/0
+ip nat inside
+int s0/0/0
+ip nat outside
+
+
+
+----------R2
+int s0/0/0
+ip address 3.1.1.2 255.255.255.252
+no shut
+
+int g0/0
+ip address 192.168.100.1 255.255.255.0
+no shut
+
+ip route 0.0.0.0 0.0.0.0 s0/0/0
+
+
+
+
+-----------------ACL
+no access-list 103
+no access-list 101
+no access-list 102
+no access-list 104
+access-list 104  deny   tcp host  192.168.10.5  host 192.168.100.5 eq www
+access-list 104  deny   tcp host  192.168.10.5  host 192.168.100.6 eq ftp
+access-list 104  permit tcp host  192.168.15.5  host 192.168.100.5 eq www
+access-list 104  deny   tcp host  192.168.15.5  host 192.168.100.6 eq ftp
+access-list 104  deny   tcp host  192.168.20.5  host 192.168.100.5 eq www
+access-list 104  permit tcp host  192.168.20.5  host 192.168.100.6 eq ftp
+access-list 104  permit ip any any
+
+int g0/0
+ip access-group 104 in
+
+
+int s0/0/0
+ip access-group 101 out
+
+
+no access-list 102
+access-list 102 permit ip any any
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
