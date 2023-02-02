@@ -1,0 +1,217 @@
+﻿Submission Deadline: January 30, 2023, Monday, 11:59 PM
+
+
+Personalised Parameters: 
+802.11	AODV	TCP Tahoe + Telnet	Random	1 Source, Random Sink
+
+Wireless MAC Type:
+* Wireless 802.15.4 
+* Wireless 802.11
+
+
+Routing Protocol:
+* DSDV
+* AODV
+* DSR
+
+
+Agent + Application:
+* UDP + Exponential Traffic
+* UDP + CBR Traffic
+* TCP Reno + FTP 
+* TCP Tahoe + Telnet, 
+
+
+Node Positioning:
+* Random (Randomly place nodes anywhere with area)
+* Grid (Place nodes in a grid. You can choose the number of rows and columns yourself)
+
+
+Flow:
+* Random Source Destination (For each flow, choose a random source and a destination. Careful not to choose same node as source and destination)
+* 1 Source, Random Sink (except source itself) (Choose a random source X, then for each flow choose X as source, and any other node as destination)
+* 1 Sink, Random Source (Choose a random sink X, then for each flow choose X as destination, and any other node as source)
+
+
+________________
+
+
+Parameters:
+Queue: Droptail, max size 50 (Using Queue/DropTail/PriQueue with DSR may cause segmentation fault. In that case you can use CMUPriQueue instead.)
+Antenna: Omni Directional
+Speed of nodes: Uniform random between 1m/s and 5m/s for each node.
+Propagation Model: Two Ray Ground Propagation Model
+
+
+With your personalised parameters and global parameters fixed, vary the parameters below.
+
+
+
+
+Baseline Parameters: (while varying one parameter, keep other parameters fixed like below)
+* Area Size: 500m x 500m 
+* Number of Nodes: 40
+* Number of flows: 20
+
+
+
+
+Vary parameters:
+* Area Size: 250m x 250m, 500m x 500m, 750m x 750m, 1000m x 1000m, 1250m x 1250m
+* Number of Nodes: 20, 40, 60, 80, 100
+* Number of flows: 10, 20, 30, 40, 50
+
+
+Metrics:
+For each of the varying parameters, plot 4 graph showing,
+* Network throughput
+* End-to-end delay
+* Packet delivery ratio (total # of packets delivered to end destination / total # of packets sent)
+* Packet drop ratio (total # of packets dropped / total # of packets sent)
+
+
+________________
+
+
+For example: 
+Say, for varying area sizes, keep other params fixed as mentioned in baseline. Find 4 metrics for each of the values of area size. Plot each metric in a separate graph. You will get 4 graphs for varying area size. One of them is the Delivery ratio. It may look like this. Clearly mention the x-axis, y-axis, x-ticks and y-ticks.
+ Points scored 
+
+The total number of graphs will be 3 x 4 = 12.
+
+
+
+
+Report:
+* Write short descriptions of your MAC type, Routing protocol, Agent Type, Application.
+* Include all the 12 graphs.
+* Write short observations on the results you got.
+
+
+
+
+
+
+Submission:
+* Code (exclude the trace files, nam files). Include only the source files (.tcl, .sh, .awk, .py, .ipynb or others)
+* Report as pdf.
+* Put all of these in a zip file
+* Name it as your student id (1805xxx.zip)
+* Submit 
+
+
+
+
+________________
+
+
+Marks Distribution:
+Basic Simulation and configs
+	4
+	Vary area size + graph
+	4
+	Vary number of nodes + graph 
+	4
+	Vary number of flows + graph
+	4
+	Report
+	4
+	Total
+	20
+	
+
+________________
+
+
+Appendix A: List of graphs
+
+
+Graph No.
+	
+
+x-axis
+	
+
+y-axis
+	Fixed Param Values
+	Area-size
+	Number of nodes
+	Number of flows
+	1
+	Area Size 
+* 250m x 250m
+* 500m x 500m
+* 750m x 750m
+* 1000m x 1000m
+* 1250m x 1250m
+	Network throughput
+	-
+	40
+	20
+	2
+	End-to-end Delay
+	-
+	40
+	20
+	3
+	Packet delivery ratio
+	-
+	40
+	20
+	4
+	Packet drop ratio
+	-
+	40
+	20
+	5
+	Number of nodes
+* 20
+* 40
+* 60
+* 80
+* 100
+	Network throughput
+	500m x 500m
+	-
+	20
+	6
+	End-to-end Delay
+	500m x 500m
+	-
+	20
+	7
+	Packet delivery ratio
+	500m x 500m
+	-
+	20
+	8
+	Packet drop ratio
+	500m x 500m
+	-
+	20
+	9
+	Number of flows
+* 10
+* 20
+* 30
+* 40
+* 50
+	Network throughput
+	500m x 500m
+	40
+	-
+	10
+	End-to-end Delay
+	500m x 500m
+	40
+	-
+	11
+	Packet delivery ratio
+	500m x 500m
+	40
+	-
+	12
+	Packet drop ratio
+	500m x 500m
+	40
+	-
