@@ -1,0 +1,8 @@
+Syllabus:
+Packet Tracer: Basic Config + VLAN
+NAT, PAT, ACL
+Socket Programming
+NS2
+Wireshark
+Advanced topics covered in the sessional class
+Idea about your own project
