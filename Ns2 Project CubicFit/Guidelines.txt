@@ -1,0 +1,14 @@
+Running modified tcp_cubic.c
+//---------------------------------------------------------
+->Go to ns2/tcp/linux/src
+->Change tcp_cubic.c with tcp_cubic.c of modified folder.
+->Come back to ns2.35 folder
+->Write "make clean && make ns && sudo make install" in command line
+//---------------------------------------------------------
+ Running original tcp_cubic.c
+//---------------------------------------------------------
+->Go to ns2/tcp/linux/src
+->Change tcp_cubic.c with tcp_cubic.c of backup folder.
+->Come back to ns2.35 folder
+->Write "make clean && make ns && sudo make install" in command line
+//---------------------------------------------------------
