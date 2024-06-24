@@ -1,4 +1,19 @@
-# Installing ns2 on WSL/Ubuntu
+## **`CSE 322` : Computer Networks Sessional**
+
+- [**`Socket Programming`**](https://github.com/ayeshathoi/Computer-Networking-322/tree/main/SOCKET%20PROGRAMMING%20-%20OFFLINE2)
+- [**`Packet Tracer`**](https://github.com/ayeshathoi/Computer-Networking-322/tree/main/Cisco%20Packet%20Tracer)
+- [**`Simulation in NS2 (configuring mac,routing protocl etc.)`**](https://github.com/ayeshathoi/Computer-Networking-322/tree/main/NS2_offline)
+- **`Wireshark`**
+
+- **`Term Project`**   
+  - [`CUBIC-FIT: A High Performance and TCP CUBIC Friendly Congestion Control Algorithm`](https://github.com/ayeshathoi/Computer-Networking-322/tree/main/Ns2%20Project%20CubicFit)
+  - `TCP Cubic-Fit Modification in ns2`
+
+
+---
+
+
+## `Installing ns2 on WSL/Ubuntu`
 
 This tutorial is **compitable for Windows 10**
 
